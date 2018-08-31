@@ -9,10 +9,12 @@ class Cube : public QGraphicsRectItem
 {
 public:
     explicit Cube(QGraphicsItem *parent = nullptr);
-    Cube(qreal x, qreal y, qreal w, qreal h, QGraphicsItem *parent = nullptr);
-    int getDiameter() const { return this->diameter; }
-    void setDiameter(int diameter) { this->diameter = diameter; }
+    Cube(qreal x, qreal y, bool h_bigger_than_w, QGraphicsItem *parent = nullptr);
+    static const double SINGLE_MAX_WIDTH_HEIGHT;
+    static const double SINGLE_MIN_WIDTH_HEIGHT;
     static const int DIAMETER_DEFAULT;
+    void setDiameterHW();
+    int getDiameter() const { return this->diameter; }
     bool getThrough() const { return this->through; }
     void setThrough(bool value);
 
@@ -20,7 +22,13 @@ protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
+    // size (used for viewing)
+    // min(w, h) * 20 == diameter
+    static const int HW_TO_DIAMETER;
+    bool h_bigger_than_w; // 表示矩形的方向
+    // size (used for calculating)
     int diameter = DIAMETER_DEFAULT; // diameter of cube, default 200, at least 20
+
     bool through = true;
 
     QPen pen = QPen(Qt::white);

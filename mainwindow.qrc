@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>new.png</file>
+        <file>play.png</file>
+        <file>random.png</file>
+        <file>exit.png</file>
+        <file>chip.png</file>
+    </qresource>
+</RCC>

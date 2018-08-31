@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Microfluidic Chip Simulation</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="mainwindow.qrc">
+    <normaloff>:/icon/chip.png</normaloff>:/icon/chip.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -266,6 +270,11 @@
         <property name="text">
          <string>Run</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normalon>:/icon/play.png</normalon>
+         </iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -326,6 +335,11 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_New">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/new.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;New</string>
    </property>
@@ -334,6 +348,11 @@
    </property>
   </action>
   <action name="action_Run">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/play.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Run</string>
    </property>
@@ -345,11 +364,21 @@
    </property>
   </action>
   <action name="actionRandom">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/random.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
-    <string>Random</string>
+    <string>Ran&amp;dom</string>
    </property>
   </action>
   <action name="action_Exit">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/exit.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Exit</string>
    </property>
@@ -363,7 +392,9 @@
    <header>chip.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="mainwindow.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_2</sender>

@@ -2,5 +2,5 @@
 
 Chip::Chip(QWidget *parent) : QGraphicsView(parent)
 {
-
+    this->setDragMode(QGraphicsView::RubberBandDrag);
 }

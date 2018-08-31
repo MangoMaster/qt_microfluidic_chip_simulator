@@ -14,9 +14,9 @@ signals:
     void resultChanged(const QVector<double> &results);
 
 public slots:
-    void setNewChip(int num, const QVector<int> &inputs, const QVector<int> &outputs);
+    void newChip(int num, const QVector<int> &inputs, const QVector<int> &outputs);
     void calculateChip();
-    void randomChip(double percent = 0.9);
+    void randomChip();
 
 private:
     int num; // num of rows/columns

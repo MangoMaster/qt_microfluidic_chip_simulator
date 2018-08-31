@@ -32,8 +32,7 @@ SOURCES += \
     newchipdialog.cpp \
     cube.cpp \
     calculate.cpp \
-    randomizer.cpp \
-    randomchipdialog.cpp
+    randomizer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,10 +42,11 @@ HEADERS += \
     newchipdialog.h \
     cube.h \
     calculate.h \
-    randomizer.h \
-    randomchipdialog.h
+    randomizer.h
 
 FORMS += \
         mainwindow.ui \
-    newchipdialog.ui \
-    randomchipdialog.ui
+    newchipdialog.ui
+
+RESOURCES += \
+    mainwindow.qrc

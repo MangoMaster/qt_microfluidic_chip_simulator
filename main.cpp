@@ -9,9 +9,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     NewChipDialog d;
-    RandomChipDialog d2;
     ChipModel m;
-    Controller(&w, &d, &d2, &m);
+    Controller(&w, &d, &m);
     w.show();
 
     return a.exec();
