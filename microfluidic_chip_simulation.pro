@@ -29,14 +29,16 @@ SOURCES += \
     controller.cpp \
     chip.cpp \
     chipmodel.cpp \
-    newchipdialog.cpp
+    newchipdialog.cpp \
+    cube.cpp
 
 HEADERS += \
         mainwindow.h \
     controller.h \
     chip.h \
     chipmodel.h \
-    newchipdialog.h
+    newchipdialog.h \
+    cube.h
 
 FORMS += \
         mainwindow.ui \

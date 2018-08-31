@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>600</height>
+    <width>412</width>
+    <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,7 +74,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="Chip" name="graphicsView"/>
     </item>
     <item>
      <widget class="QGroupBox" name="groupBox_2">
@@ -157,7 +157,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>412</width>
      <height>39</height>
     </rect>
    </property>
@@ -183,9 +183,19 @@
    <property name="text">
     <string>&amp;New</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Chip</class>
+   <extends>QGraphicsView</extends>
+   <header>chip.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

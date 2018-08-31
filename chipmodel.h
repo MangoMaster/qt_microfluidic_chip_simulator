@@ -19,6 +19,9 @@ private:
     QVector<int> inputs; // column num of input cubes
     QVector<int> outputs; // column num of output cubes
     QVector<int> diameters; // diameters of cubes, default 200, at least 20
+
+    QPen pen;
+    QBrush brush;
 };
 
 #endif // CHIPMODEL_H
