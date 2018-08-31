@@ -16,6 +16,9 @@ public:
     ~MainWindow();
     friend class Controller;
 
+public slots:
+    void displayResult(const QVector<double>& results);
+
 private:
     Ui::MainWindow *ui;
 };

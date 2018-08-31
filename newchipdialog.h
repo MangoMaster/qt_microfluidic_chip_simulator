@@ -17,6 +17,7 @@ public:
 
 signals:
     void accepted(int num, const QVector<int> &inputs, const QVector<int> &outputs);
+    void accepted(bool acceptedTrue);
 
 public slots:
     void accept() override;

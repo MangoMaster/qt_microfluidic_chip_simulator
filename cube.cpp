@@ -2,7 +2,7 @@
 
 const int Cube::DIAMETER_DEFAULT = 200;
 const QBrush Cube::THROUGH_BRUSH = QBrush(Qt::blue);
-const QBrush Cube::NOT_THROUGH_BRUSH = QBrush();
+const QBrush Cube::THROUGH_NOT_BRUSH = QBrush();
 
 Cube::Cube(QGraphicsItem *parent)
     : QGraphicsRectItem(parent)
@@ -17,21 +17,27 @@ Cube::Cube(qreal x, qreal y, qreal w, qreal h, QGraphicsItem *parent)
     this->setBrush(brush);
 }
 
-void Cube::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Cube::setThrough(bool value)
 {
-    if (this->through)
-    {
-        this->through = false;
-        this->diameter = 0;
-        this->setBrush(NOT_THROUGH_BRUSH);
-    }
-    else
+    if (value)
     {
         this->through = true;
         this->diameter = DIAMETER_DEFAULT;
         this->setBrush(THROUGH_BRUSH);
     }
+    else
+    {
+        this->through = false;
+        this->diameter = 0;
+        this->setBrush(THROUGH_NOT_BRUSH);
+    }
+}
+
+void Cube::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    this->setThrough(this->getThrough());
     QGraphicsRectItem::mousePressEvent(event);
 }
+
 
 

@@ -10,6 +10,11 @@ class Cube : public QGraphicsRectItem
 public:
     explicit Cube(QGraphicsItem *parent = nullptr);
     Cube(qreal x, qreal y, qreal w, qreal h, QGraphicsItem *parent = nullptr);
+    int getDiameter() const { return this->diameter; }
+    void setDiameter(int diameter) { this->diameter = diameter; }
+    static const int DIAMETER_DEFAULT;
+    bool getThrough() const { return this->through; }
+    void setThrough(bool value);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -20,10 +25,8 @@ private:
 
     QPen pen = QPen(Qt::white);
     QBrush brush = THROUGH_BRUSH;
-
-    static const int DIAMETER_DEFAULT;
     static const QBrush THROUGH_BRUSH;
-    static const QBrush NOT_THROUGH_BRUSH;
+    static const QBrush THROUGH_NOT_BRUSH;
 };
 
 #endif // CUBE_H

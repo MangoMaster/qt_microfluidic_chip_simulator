@@ -43,5 +43,6 @@ void NewChipDialog::accept()
     outputs.push_back(this->ui->spinBox_5->value());
     outputs.push_back(this->ui->spinBox_6->value());
     emit accepted(this->ui->spinBox->value(), inputs, outputs);
+    emit accepted(true);
     QDialog::accept();
 }
