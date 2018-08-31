@@ -10,6 +10,7 @@ Controller::Controller(MainWindow *mainWindow, NewChipDialog *newChipDialog, Chi
 void Controller::control()
 {
     mainWindow->ui->graphicsView->setScene(chipModel);
+    QObject::connect(mainWindow->ui->graphicsView, SIGNAL(rubberBandSelected()), chipModel, SLOT(rubberBandChip()));
 
     QObject::connect(mainWindow->ui->action_New, SIGNAL(triggered(bool)), newChipDialog, SLOT(exec()));
     QObject::connect(newChipDialog, SIGNAL(accepted(int,QVector<int>,QVector<int>)), chipModel, SLOT(newChip(int,QVector<int>,QVector<int>)));

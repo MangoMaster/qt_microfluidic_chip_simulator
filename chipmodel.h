@@ -17,6 +17,7 @@ public slots:
     void newChip(int num, const QVector<int> &inputs, const QVector<int> &outputs);
     void calculateChip();
     void randomChip();
+    void rubberBandChip();
 
 private:
     int num; // num of rows/columns

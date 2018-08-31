@@ -15,7 +15,7 @@ Cube::Cube(QGraphicsItem *parent)
     pen.setWidth(0.5);
     this->setPen(pen);
     this->setBrush(brush);
-    //this->setFlag(QGraphicsItem::ItemIsSelectable);
+    this->setFlag(QGraphicsItem::ItemIsSelectable);
 }
 
 Cube::Cube(qreal x, qreal y, bool h_bigger_than_w, QGraphicsItem *parent)
@@ -28,7 +28,7 @@ Cube::Cube(qreal x, qreal y, bool h_bigger_than_w, QGraphicsItem *parent)
     pen.setWidth(0.5);
     this->setPen(pen);
     this->setBrush(brush);
-    //this->setFlag(QGraphicsItem::ItemIsSelectable);
+    this->setFlag(QGraphicsItem::ItemIsSelectable);
 }
 
 void Cube::setThrough(bool value)
@@ -50,30 +50,18 @@ void Cube::setThrough(bool value)
     }
 }
 
-void Cube::setDiameterHW()
+void Cube::setDiameterHW(int diam)
 {
+    if (this->through) // not through => this->diameter == 0
+        this->diameter = diam;
     if (h_bigger_than_w)
     {
-        bool ok;
-        int diam = QInputDialog::getInt(nullptr, "", "Cube length:", HW_TO_DIAMETER * this->rect().width(), 20, 1600, 10, &ok);
-        if (!ok)
-            return;
-        if (this->through) // not through => this->diameter == 0
-            this->diameter = diam;
-
         double w = diam / HW_TO_DIAMETER;
         double x = this->rect().x() + this->rect().width() / 2 - w / 2;
         this->setRect(x, this->rect().y(), w, this->rect().height());
     }
     else
     {
-        bool ok;
-        int diam = QInputDialog::getInt(nullptr, "", "Cube length:", HW_TO_DIAMETER * this->rect().height(), 20, 1600, 10, &ok);
-        if (!ok)
-            return;
-        if (this->through) // not through => this->diameter == 0
-            this->diameter = diam;
-
         double h = diam / HW_TO_DIAMETER;
         double y = this->rect().y() + this->rect().height() / 2 - h / 2;
         this->setRect(this->rect().x(), y, this->rect().width(), h);
@@ -88,12 +76,57 @@ void Cube::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->setThrough(!this->getThrough());
         break;
     case Qt::RightButton:
-        this->setDiameterHW();
+    {
+        bool ok;
+        int diam = QInputDialog::getInt(nullptr, "", "Cube length:",
+                                        (h_bigger_than_w ? HW_TO_DIAMETER * this->rect().width() : HW_TO_DIAMETER * this->rect().height()),
+                                        20, 1600, 10, &ok);
+        if (ok)
+            this->setDiameterHW(diam);
+    }
+        QGraphicsRectItem::mousePressEvent(event);
         break;
     default:
         QGraphicsRectItem::mousePressEvent(event);
+        break;
     }
+}
+
+void Cube::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton)
+        return; // do not set selected when left button release
     QGraphicsRectItem::mousePressEvent(event);
 }
 
+/*
+QVariant Cube::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+    if (change == GraphicsItemChange::ItemSelectedHasChanged
+            && value == true)
+    {
+        SelectedCubeDialog dialog(nullptr);
+        if (dialog.exec() == QDialog::Accepted)
+        {
+            switch (dialog.ui->comboBox->currentIndex())
+            {
+            case 1:
+                this->setThrough(true);
+                break;
+            case 2:
+                this->setThrough(false);
+                break;
+            case 3:
+                this->setThrough(!this->getThrough());
+                break;
+            default:
+                break;
+            }
+            if (dialog.ui->checkBox->isChecked())
+                this->setDiameterHW(dialog.ui->spinBox->value());
+        }
+    }
+    return QGraphicsRectItem::itemChange(change, value);
+}
+*/
 

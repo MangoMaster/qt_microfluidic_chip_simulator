@@ -2,6 +2,8 @@
 #include "cube.h"
 #include "calculate.h"
 #include "randomizer.h"
+#include "selectedcubedialog.h"
+#include "ui_selectedcubedialog.h"
 #include <QInputDialog>
 #include <QGraphicsWidget>
 #include <cassert>
@@ -97,7 +99,45 @@ void ChipModel::randomChip()
     calculateChip();
 }
 
-void ChipModel::on_ChipModel_selectionChanged()
+void ChipModel::rubberBandChip()
 {
-    qDebug() << "??";
+    if (selectedItems().empty())
+        return;
+    SelectedCubeDialog dialog(nullptr);
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        switch (dialog.ui->comboBox->currentIndex())
+        {
+        case 1:
+            for (auto selectedItem : selectedItems())
+            {
+                Cube *selectedCube = dynamic_cast<Cube*>(selectedItem);
+                selectedCube->setThrough(true);
+            }
+            break;
+        case 2:
+            for (auto selectedItem : selectedItems())
+            {
+                Cube *selectedCube = dynamic_cast<Cube*>(selectedItem);
+                selectedCube->setThrough(false);
+            }
+            break;
+        case 3:
+            for (auto selectedItem : selectedItems())
+            {
+                Cube *selectedCube = dynamic_cast<Cube*>(selectedItem);
+                selectedCube->setThrough(!selectedCube->getThrough());
+            }
+            break;
+        default:
+            break;
+        }
+        if (dialog.ui->checkBox->isChecked())
+            for (auto selectedItem : selectedItems())
+            {
+                Cube *selectedCube = dynamic_cast<Cube*>(selectedItem);
+                selectedCube->setDiameterHW(dialog.ui->spinBox->value());
+            }
+    }
 }
+

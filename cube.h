@@ -13,13 +13,15 @@ public:
     static const double SINGLE_MAX_WIDTH_HEIGHT;
     static const double SINGLE_MIN_WIDTH_HEIGHT;
     static const int DIAMETER_DEFAULT;
-    void setDiameterHW();
+    void setDiameterHW(int diam);
     int getDiameter() const { return this->diameter; }
     bool getThrough() const { return this->through; }
     void setThrough(bool value);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+    // QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 private:
     // size (used for viewing)

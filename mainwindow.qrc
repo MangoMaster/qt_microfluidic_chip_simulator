@@ -5,5 +5,8 @@
         <file>random.png</file>
         <file>exit.png</file>
         <file>chip.png</file>
+        <file>correct.png</file>
+        <file>wrong.png</file>
+        <file>reverse.png</file>
     </qresource>
 </RCC>
