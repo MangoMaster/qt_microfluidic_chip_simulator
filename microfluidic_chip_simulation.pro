@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = microfluidic_chip_simulation
+TARGET = microfluidic_chip_simulator
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
