@@ -11,3 +11,9 @@ void Chip::rubberBandChangedToSelected(QRect rubberBandRect)
     if (rubberBandRect.isNull())
         emit rubberBandSelected();
 }
+
+void Chip::setScalePercent(int percent)
+{
+    this->resetTransform();
+    this->scale(percent * 0.01, percent * 0.01);
+}

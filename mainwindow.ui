@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Microfluidic Chip Simulation</string>
+   <string>Microfluidic Chip Simulator</string>
   </property>
   <property name="windowIcon">
    <iconset resource="mainwindow.qrc">
@@ -20,7 +20,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <spacer name="horizontalSpacer_8">
         <property name="orientation">
@@ -30,6 +30,94 @@
          <size>
           <width>100</width>
           <height>60</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>输入管道流速</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <spacer name="horizontalSpacer_16">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="lcdNumber_6">
+             <property name="digitCount">
+              <number>4</number>
+             </property>
+             <property name="intValue" stdset="0">
+              <number>200</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_17">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="lcdNumber_7">
+             <property name="digitCount">
+              <number>4</number>
+             </property>
+             <property name="intValue" stdset="0">
+              <number>200</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_18">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_15">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -119,7 +207,33 @@
      </layout>
     </item>
     <item>
-     <widget class="Chip" name="graphicsView"/>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="Chip" name="graphicsView"/>
+      </item>
+      <item>
+       <widget class="QSlider" name="verticalSlider">
+        <property name="minimum">
+         <number>20</number>
+        </property>
+        <property name="maximum">
+         <number>180</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksAbove</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -310,15 +424,20 @@
     <addaction name="action_New"/>
     <addaction name="actionRandom"/>
     <addaction name="action_Run"/>
-   </widget>
-   <widget class="QMenu" name="menu_Exit">
-    <property name="title">
-     <string>&amp;Exit</string>
-    </property>
+    <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_Help"/>
+    <addaction name="separator"/>
+    <addaction name="action_About"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
    <addaction name="menu_Settings"/>
-   <addaction name="menu_Exit"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -330,6 +449,9 @@
    <addaction name="action_New"/>
    <addaction name="actionRandom"/>
    <addaction name="action_Run"/>
+   <addaction name="separator"/>
+   <addaction name="action_Help"/>
+   <addaction name="action_About"/>
    <addaction name="separator"/>
    <addaction name="action_Exit"/>
   </widget>
@@ -382,6 +504,39 @@
    <property name="text">
     <string>&amp;Exit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_Help">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/help.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Help</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/about.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="icon">
+    <iconset>
+     <normalon>:/icon/qt.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -390,6 +545,9 @@
    <class>Chip</class>
    <extends>QGraphicsView</extends>
    <header>chip.h</header>
+   <slots>
+    <slot>setScalePercent(int)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
@@ -403,12 +561,28 @@
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>593</y>
+     <x>473</x>
+     <y>615</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>graphicsView</receiver>
+   <slot>setScalePercent(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>654</x>
+     <y>344</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>358</y>
     </hint>
    </hints>
   </connection>

@@ -8,5 +8,8 @@
         <file>correct.png</file>
         <file>wrong.png</file>
         <file>reverse.png</file>
+        <file>help.png</file>
+        <file>about.png</file>
+        <file>qt.png</file>
     </qresource>
 </RCC>

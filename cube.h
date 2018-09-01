@@ -20,7 +20,6 @@ public:
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
     // QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 private:

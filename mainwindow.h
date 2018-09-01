@@ -17,6 +17,8 @@ public:
     friend class Controller;
 
 public slots:
+    void helpDialog();
+    void aboutDialog();
     void displayResult(const QVector<double>& results);
 
 private:

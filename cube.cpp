@@ -84,49 +84,9 @@ void Cube::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if (ok)
             this->setDiameterHW(diam);
     }
-        QGraphicsRectItem::mousePressEvent(event);
         break;
     default:
-        QGraphicsRectItem::mousePressEvent(event);
         break;
     }
-}
-
-void Cube::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton)
-        return; // do not set selected when left button release
     QGraphicsRectItem::mousePressEvent(event);
 }
-
-/*
-QVariant Cube::itemChange(GraphicsItemChange change, const QVariant &value)
-{
-    if (change == GraphicsItemChange::ItemSelectedHasChanged
-            && value == true)
-    {
-        SelectedCubeDialog dialog(nullptr);
-        if (dialog.exec() == QDialog::Accepted)
-        {
-            switch (dialog.ui->comboBox->currentIndex())
-            {
-            case 1:
-                this->setThrough(true);
-                break;
-            case 2:
-                this->setThrough(false);
-                break;
-            case 3:
-                this->setThrough(!this->getThrough());
-                break;
-            default:
-                break;
-            }
-            if (dialog.ui->checkBox->isChecked())
-                this->setDiameterHW(dialog.ui->spinBox->value());
-        }
-    }
-    return QGraphicsRectItem::itemChange(change, value);
-}
-*/
-

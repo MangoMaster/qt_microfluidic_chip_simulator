@@ -14,6 +14,7 @@ signals:
 
 public slots:
     void rubberBandChangedToSelected(QRect rubberBandRect);
+    void setScalePercent(int percent);
 };
 
 #endif // CHIP_H
