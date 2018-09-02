@@ -31,6 +31,10 @@ You can get the help below in the menu "Help".
 * Drag the slider on the right to set chip's scale.
 * Exit (Ctrl+Q).
 
+## Software Design Document
+
+See [Software Design Document](./software_design_document.md)
+
 ## License
 
 MIT License.
