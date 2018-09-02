@@ -23,8 +23,12 @@ void ChipModel::newChip(int num, const QVector<int> &inputs, const QVector<int> 
     assert(outputs.size() == 3);
     this->num = num;
     this->inputs = inputs;
+    for (int i = 0; i < 2; ++i)
+        --(this->inputs[i]);
     std::sort(this->inputs.begin(), this->inputs.end());
     this->outputs = outputs;
+    for (int i = 0; i < 3; ++i)
+        --(this->outputs[i]);
     std::sort(this->outputs.begin(), this->outputs.end());
     this->cubes.clear();
     this->cubes.reserve(2 * num * num - 2 * num + 5);
@@ -58,14 +62,14 @@ void ChipModel::newChip(int num, const QVector<int> &inputs, const QVector<int> 
     // inputs
     for (int i = 0; i <= 1; ++i)
     {
-        Cube *cube = new Cube(startWidth + (this->inputs[i] - 1) * Cube::SINGLE_MAX_WIDTH_HEIGHT + (this->inputs[i] - 1) * Cube::SINGLE_MIN_WIDTH_HEIGHT, startHeight, true);
+        Cube *cube = new Cube(startWidth + this->inputs[i] * Cube::SINGLE_MAX_WIDTH_HEIGHT + this->inputs[i] * Cube::SINGLE_MIN_WIDTH_HEIGHT, startHeight, true);
         this->cubes.push_back(cube);
         this->addItem(cube);
     }
     // outputs
     for (int i = 0; i <= 2; ++i)
     {
-        Cube *cube = new Cube(startWidth + (this->outputs[i] - 1) * Cube::SINGLE_MAX_WIDTH_HEIGHT + (this->outputs[i] - 1) * Cube::SINGLE_MIN_WIDTH_HEIGHT, startHeight + num * Cube::SINGLE_MAX_WIDTH_HEIGHT + num * Cube::SINGLE_MIN_WIDTH_HEIGHT, true);
+        Cube *cube = new Cube(startWidth + this->outputs[i] * Cube::SINGLE_MAX_WIDTH_HEIGHT + this->outputs[i] * Cube::SINGLE_MIN_WIDTH_HEIGHT, startHeight + num * Cube::SINGLE_MAX_WIDTH_HEIGHT + num * Cube::SINGLE_MIN_WIDTH_HEIGHT, true);
         this->cubes.push_back(cube);
         this->addItem(cube);
     }
